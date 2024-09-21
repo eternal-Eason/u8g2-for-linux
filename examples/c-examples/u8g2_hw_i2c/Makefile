@@ -10,13 +10,13 @@
 
 # C-SKY Linux:  csky-linux-gcc
 
-CC=arm-linux-gnueabi-gcc
+CC=/home/eternal/board/rv1103/luckfox-pico/sysdrv/source/buildroot/buildroot-2023.02.6/output/host/bin/arm-rockchip830-linux-uclibcgnueabihf-gcc
 
 # IP Address of your PI
 PI=pi@raspberrypi.local
 
 TARGET=u8g2_hw_i2c
-IDIR= -I ../../../drivers -I ../../../csrc -I ../../../port
+IDIR= -I ../../../drivers -I ../../../csrc -I ../../../port -I Hugo_UI
 SRCDIR=../../../csrc
 OBJDIR=../../../obj
 OUTDIR=../../../bin
@@ -26,6 +26,10 @@ LIBS=  -lm
 CFLAGS= $(IDIR) -W -Wall -D __ARM_LINUX__
 
 OBJ+=u8g2_hw_i2c.o\
+	Hugo_UI/Hugo_UI.o\
+	Hugo_UI/HugoUI_User.o\
+	Hugo_UI/HugoUI_BMP.o\
+	Hugo_UI/OLED_User.o\
 	../../../port/u8g2port.o\
 	../../../drivers/gpio.o\
 	../../../drivers/spi.o\
