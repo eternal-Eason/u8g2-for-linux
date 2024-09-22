@@ -893,7 +893,7 @@ void HugoUICommonEventProc(void)
  */
 void HugoUI_Control(void)
 {
-    if (HugoUIExecuteRate(&Rate60Hz))
+    if (1)
     {
         HugoUIClearBuffer(); // u8g2_ScreenClear
 
@@ -938,7 +938,7 @@ void HugoUI_System(void)
     EncoderNum = 0;
 
     // Get currentPage by id
-    if (currentPage->pageId != ui_index || currentPage == NULL)
+    if (currentPage == NULL)
     {
         currentPage = pageHead;
         while (currentPage->pageId != ui_index)
@@ -946,10 +946,11 @@ void HugoUI_System(void)
             currentPage = currentPage->next;
         }
         printf("pageid:%d\r\n", currentPage->pageId);
+        printf("currentPage name :%s \r\n", currentPage->title);
     }
 
     // Get currentItem by id
-    if (currentItem->lineId != ui_select || currentItem->inPage != ui_index || currentItem == NULL)
+    if (currentItem == NULL)
     {
         currentItem = currentPage->itemHead;
         while (currentItem->lineId != ui_select)
@@ -957,6 +958,7 @@ void HugoUI_System(void)
             currentItem = currentItem->next;
         }
         printf("itemlid:%d\r\n", currentItem->lineId);
+        printf("currentItem.title:%s\r\n", currentItem->title);
     }
 
     if (ItemUIisRunning)

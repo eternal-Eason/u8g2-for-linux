@@ -19,14 +19,19 @@ int main(void) {
 	HugoUIAnimationInit();
 	u8g2_ClearBuffer(&u8g2);
 	u8g2_SetFont(&u8g2, u8g2_font_ncenB08_tr);
-	u8g2_DrawStr(&u8g2, 1, 18, "LYH-2024-09-19");
+	u8g2_DrawStr(&u8g2, 1, 18, "2024-09-19");
 
 	u8g2_SetFont(&u8g2, u8g2_font_unifont_t_symbols);
 	u8g2_DrawGlyph(&u8g2, 112, 56, 0x2603);
 
 	u8g2_SendBuffer(&u8g2);
 
-	sleep_ms(5000);
+	sleep_ms(2000);
+
+	while(1){
+		HugoUI_System();
+	}
+
 	u8g2_SetPowerSave(&u8g2, 1);
 	// Close and deallocate i2c_t
 	done_i2c();
